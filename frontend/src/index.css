@@ -37,7 +37,6 @@ body::before {
   align-items: center;
   height: 100vh;
 }
-
 /* Glass card */
 .card-glass {
   background: rgba(255,255,255,0.45);
