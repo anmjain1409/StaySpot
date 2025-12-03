@@ -29,7 +29,7 @@ export default function Landing() {
           Welcome to StaySpot 🏠
         </h1>
         <p style={{ fontSize: "18px", marginTop: "12px", color: "#1E293B" }}>
-          Track vacant houses in your colony easily.
+          Track vacant houses in colony easily.
         </p>
 
         <div style={{ marginTop: "25px" }}>
