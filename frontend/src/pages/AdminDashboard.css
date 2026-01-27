@@ -1,0 +1,219 @@
+/* AdminDashboard.css */
+:root {
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-blue: #3b82f6;
+  --accent-green: #22c55e;
+  --accent-red: #ef4444;
+  --accent-yellow: #eab308;
+}
+
+.admin-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  padding: 2rem;
+}
+
+.admin-header {
+  margin-bottom: 2rem;
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.admin-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card.blue {
+  background: linear-gradient(135deg, #1e40af, #2563eb);
+}
+
+.stat-card.green {
+  background: linear-gradient(135deg, #166534, #16a34a);
+}
+
+.stat-card.red {
+  background: linear-gradient(135deg, #991b1b, #dc2626);
+}
+
+.stat-card.yellow {
+  background: linear-gradient(135deg, #a16207, #ca8a04);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Section Header */
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Table Styles */
+.table-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.95rem;
+}
+
+.custom-table tr:last-child td {
+  border-bottom: none;
+}
+
+.custom-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-badge.vacant {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+}
+
+.status-badge.booked {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+.status-badge.pending {
+  background-color: rgba(234, 179, 8, 0.1);
+  color: #facc15;
+}
+
+.action-btn {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.action-btn:hover {
+  opacity: 0.9;
+}
+
+.reject-btn {
+  background: var(--accent-red);
+  margin-left: 0.5rem;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: white;
+}
+
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+/* Modal/Input */
+.remark-container {
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.2);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.remark-input {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}

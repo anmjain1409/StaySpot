@@ -30,6 +30,9 @@ public class User {
     @Column(nullable = false)
     private String fullName;
 
+    @Column(nullable = false)
+    private String role; // USER, LANDLORD, ADMIN
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -40,6 +43,7 @@ public class User {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (role == null) role = "USER";
     }
 
     @PreUpdate
