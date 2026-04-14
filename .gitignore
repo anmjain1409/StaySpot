@@ -1,0 +1,25 @@
+# Node.js
+**/node_modules/
+**/dist/
+**/.env
+**/.env.local
+
+# Java
+**/target/
+**/.settings/
+**/.classpath/
+**/.project/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
