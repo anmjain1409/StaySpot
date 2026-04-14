@@ -1,5 +1,6 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api";
-console.log("DEBUG: StaySpot API URL is set to ->", API_BASE_URL);
+// Hardcoding for production deployment to bypass Render env issues
+export const API_BASE_URL = "https://stayspot-z3sx.onrender.com/api";
+console.log("DEBUG: Hardcoded API URL ->", API_BASE_URL);
 
 /* ================= AUTH SERVICE ================= */
 
