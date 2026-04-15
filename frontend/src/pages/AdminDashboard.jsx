@@ -61,8 +61,8 @@ export default function AdminDashboard() {
       .finally(() => setLoading(false));
 
     // Fetch booked houses count
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/api/bookings/stats", {
+    const token = localStorage.getItem("authToken");
+    fetch(`${API_BASE_URL}/bookings/stats`, {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -71,8 +71,8 @@ export default function AdminDashboard() {
   };
 
   const fetchBookedHouses = () => {
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/api/bookings/booked-houses", {
+    const token = localStorage.getItem("authToken");
+    fetch(`${API_BASE_URL}/bookings/booked-houses`, {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -81,8 +81,8 @@ export default function AdminDashboard() {
   };
 
   const fetchVacantHouses = () => {
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/api/bookings/vacant-houses", {
+    const token = localStorage.getItem("authToken");
+    fetch(`${API_BASE_URL}/bookings/vacant-houses`, {
       headers: { "Authorization": `Bearer ${token}` }
     })
       .then(res => res.json())

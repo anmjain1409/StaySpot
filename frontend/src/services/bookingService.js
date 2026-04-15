@@ -3,7 +3,7 @@ import { API_BASE_URL } from "./api";
 export const bookingService = {
 
   createBooking: async (data) => {
-    const token = localStorage.getItem("token"); // ✅ FIXED
+    const token = localStorage.getItem("authToken"); // ✅ FIXED
 
     const response = await fetch(`${API_BASE_URL}/bookings/create`, {
       method: "POST",
@@ -25,7 +25,7 @@ export const bookingService = {
   },
 
   getUserBookings: async (userId) => {
-    const token = localStorage.getItem("token"); // ✅ FIXED
+    const token = localStorage.getItem("authToken"); // ✅ FIXED
 
     const response = await fetch(`${API_BASE_URL}/bookings/user/${userId}`, {
       headers: {
@@ -41,7 +41,7 @@ export const bookingService = {
   },
 
   getLandlordBookings: async (landlordId) => {
-    const token = localStorage.getItem("token"); // ✅ FIXED
+    const token = localStorage.getItem("authToken"); // ✅ FIXED
 
     const response = await fetch(`${API_BASE_URL}/bookings/landlord/${landlordId}`, {
       headers: {
@@ -57,7 +57,7 @@ export const bookingService = {
   },
 
   approveBooking: async (id) => {
-    const token = localStorage.getItem("token"); // ✅ FIXED
+    const token = localStorage.getItem("authToken"); // ✅ FIXED
 
     const response = await fetch(`${API_BASE_URL}/bookings/${id}/approve`, {
       method: "PUT",
@@ -74,7 +74,7 @@ export const bookingService = {
   },
 
   rejectBooking: async (id, remarks) => {
-    const token = localStorage.getItem("token"); // ✅ FIXED
+    const token = localStorage.getItem("authToken"); // ✅ FIXED
 
     const response = await fetch(`${API_BASE_URL}/bookings/${id}/reject`, {
       method: "PUT",
@@ -93,7 +93,7 @@ export const bookingService = {
   },
 
   checkUserBooking: async (userId, propertyId) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("authToken");
 
     const response = await fetch(`${API_BASE_URL}/bookings/check/${userId}/${propertyId}`, {
       headers: {

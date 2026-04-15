@@ -133,7 +133,7 @@ export const landlordService = {
 export const propertyService = {
   create: async (data) => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties`, {
+    const res = await fetch(`${API_BASE_URL}/property`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -148,7 +148,7 @@ export const propertyService = {
   getByOwner: async (username) => {
     const token = localStorage.getItem("authToken");
     const res = await fetch(
-      `${API_BASE_URL}/properties/owner/${encodeURIComponent(username)}`,
+      `${API_BASE_URL}/property/owner/${encodeURIComponent(username)}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -159,7 +159,7 @@ export const propertyService = {
 
   getApproved: async () => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties/approved`, {
+    const res = await fetch(`${API_BASE_URL}/property/approved`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error("Failed to fetch approved properties");
@@ -168,7 +168,7 @@ export const propertyService = {
 
   getPending: async () => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties/pending`, {
+    const res = await fetch(`${API_BASE_URL}/property/pending`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error("Failed to fetch pending properties");
@@ -177,7 +177,7 @@ export const propertyService = {
 
   approve: async (id) => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties/${id}/approve`, {
+    const res = await fetch(`${API_BASE_URL}/property/${id}/approve`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -187,7 +187,7 @@ export const propertyService = {
 
   reject: async (id, remark) => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties/${id}/reject`, {
+    const res = await fetch(`${API_BASE_URL}/property/${id}/reject`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -201,7 +201,7 @@ export const propertyService = {
 
   delete: async (id) => {
     const token = localStorage.getItem("authToken");
-    const res = await fetch(`${API_BASE_URL}/properties/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/property/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

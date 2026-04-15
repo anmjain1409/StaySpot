@@ -1,24 +1,4 @@
-// Look for the propertyService.create endpoint - verify it's pointing to the correct deployed URL
-
-// It should look something like:
-export const propertyService = {
-  create: async (data) => {
-    const response = await fetch(`${API_BASE_URL}/properties`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify(data)
-    });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${await response.text()}`);
-    }
-    
-    return response.json();
-  }
-};import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { propertyService } from "../services/api";
 import bgImage from "../images/colony-bg-img.png";
