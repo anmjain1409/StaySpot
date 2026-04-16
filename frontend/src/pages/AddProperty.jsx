@@ -8,6 +8,7 @@ export default function AddProperty() {
   const location = useLocation();
 
   const [form, setForm] = useState({
+    title: "",
     ownerName: "",
     mobileNumber: "",
     houseNo: "",
@@ -62,7 +63,7 @@ export default function AddProperty() {
   };
 
   /* ================= AI & IMAGE HANDLERS ================= */
-  
+
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     files.forEach(file => {
@@ -83,7 +84,7 @@ export default function AddProperty() {
 
   const analyzeWithAI = async () => {
     let geminiKey = import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem("GEMINI_KEY");
-    
+
     if (!geminiKey) {
       const key = prompt("Please enter your Gemini API Key to use this feature:");
       if (key) {
@@ -193,7 +194,7 @@ export default function AddProperty() {
             <p style={{ fontSize: "14px", color: "#666", marginBottom: "15px" }}>
               Upload photos of your house. AI can help you fill the form automatically!
             </p>
-            
+
             <div style={{ display: "flex", gap: "10px", marginBottom: "20px", flexWrap: "wrap" }}>
               <label style={aiButtonStyle}>
                 <input
@@ -270,6 +271,20 @@ export default function AddProperty() {
           <section style={sectionStyle}>
             <h3 style={sectionTitleStyle}>House Details</h3>
             <div style={gridStyle}>
+              {/* 🔥 ADD THIS */}
+              <div style={inputGroupStyle}>
+                <label style={labelStyle}>
+                  Property Title <span style={{ color: "red" }}>*</span>
+                </label>
+                <input
+                  name="title"
+                  placeholder="e.g. 2BHK near park"
+                  required
+                  value={form.title}
+                  onChange={handleChange}
+                  style={inputFieldStyle}
+                />
+              </div>
               <div style={inputGroupStyle}>
                 <label style={labelStyle}>House Number <span style={{ color: "red" }}>*</span></label>
                 <input
