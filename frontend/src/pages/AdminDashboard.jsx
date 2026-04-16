@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaHome, FaSignOutAlt, FaSun, FaMoon } from "react-icons/fa"; // Added icons
 import { useNavigate } from "react-router-dom";
-import { landlordService, authService, propertyService } from "../services/api";
+import { landlordService, authService, propertyService, API_BASE_URL } from "../services/api";
 import "./AdminDashboard.css";
 
 export default function AdminDashboard() {
