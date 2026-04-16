@@ -67,7 +67,11 @@ public class PropertyController {
     @GetMapping("/pending")
     public ResponseEntity<List<PropertyResponse>> getPending(HttpServletRequest request) {
         if (!isAdmin(request)) {
-            return ResponseEntity.status(403).body(null);
+            String header = request.getHeader("Authorization");
+            String token = header.substring(7);
+            String username = jwtUtil.extractUsername(token);
+            String role = userService.getUserByUsername(username).map(u -> u.getRole()).orElse("NOT_FOUND");
+            return ResponseEntity.status(403).body("Forbidden: User " + username + " has role " + role);
         }
         return ResponseEntity.ok(service.getPending());
     }
