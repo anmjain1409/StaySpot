@@ -34,7 +34,7 @@ public class PropertyService {
                 .houseType(req.getHouseType())
                 .bhk(req.getBhk())
                 .furnishing(req.getFurnishing())
-                .availableFrom((req.getAvailableFrom() != null && !req.getAvailableFrom().isEmpty()) ? java.time.LocalDate.parse(req.getAvailableFrom()) : null)
+                .availableFrom(parseDate(req.getAvailableFrom()))
                 .amenities(req.getAmenities())
                 .images(req.getImages())
                 .latitude(req.getLatitude())
@@ -122,5 +122,21 @@ public class PropertyService {
         repository.findById(id).ifPresent(p -> {
             repository.delete(p);
         });
+    }
+
+    private java.time.LocalDate parseDate(String dateStr) {
+        if (dateStr == null || dateStr.isEmpty())
+            return null;
+        try {
+            return java.time.LocalDate.parse(dateStr); // Default YYYY-MM-DD
+        } catch (Exception e) {
+            try {
+                // Try MM/DD/YYYY if YYYY-MM-DD fails
+                java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                return java.time.LocalDate.parse(dateStr, fmt);
+            } catch (Exception e2) {
+                return null; // Fallback to null instead of crashing
+            }
+        }
     }
 }

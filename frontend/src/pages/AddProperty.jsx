@@ -169,6 +169,7 @@ export default function AddProperty() {
         rentPrice: parseFloat(form.rentPrice),
         securityDeposit: form.securityDeposit ? parseFloat(form.securityDeposit) : null,
       };
+      console.log("Submitting property payload:", payload);
       await propertyService.create(payload);
       alert("Listing request submitted successfully!");
       navigate("/landlord-status");

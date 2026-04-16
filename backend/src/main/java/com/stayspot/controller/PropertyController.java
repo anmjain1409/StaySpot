@@ -48,7 +48,7 @@ public class PropertyController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(500).build();
+            return ResponseEntity.status(500).body("Error: " + e.getMessage());
         }
     }
 
