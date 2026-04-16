@@ -32,6 +32,8 @@ public class Property {
     private String furnishing;
     private LocalDate availableFrom;
     @ElementCollection
+    @CollectionTable(name = "property_amenities", joinColumns = @JoinColumn(name = "property_id"))
+    @Column(name = "amenity")
     private List<String> amenities;
     private Double latitude;
     private Double longitude;
