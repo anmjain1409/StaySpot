@@ -113,7 +113,7 @@ public class PropertyController {
                 return false;
             String username = jwtUtil.extractUsername(token);
             return userService.getUserByUsername(username)
-                    .map(u -> "ADMIN".equals(u.getRole()))
+                    .map(u -> "ADMIN".equalsIgnoreCase(u.getRole()))
                     .orElse(false);
         } catch (Exception ex) {
             return false;

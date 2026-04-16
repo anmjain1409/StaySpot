@@ -63,7 +63,7 @@ public class LandlordController {
             String token = header.substring(7);
             if (!jwtUtil.isTokenValid(token)) return false;
             String username = jwtUtil.extractUsername(token);
-            return userService.getUserByUsername(username).map(u -> "ADMIN".equals(u.getRole())).orElse(false);
+            return userService.getUserByUsername(username).map(u -> "ADMIN".equalsIgnoreCase(u.getRole())).orElse(false);
         } catch (Exception ex) {
             return false;
         }
