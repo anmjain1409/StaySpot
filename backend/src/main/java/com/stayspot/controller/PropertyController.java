@@ -25,7 +25,7 @@ public class PropertyController {
 
     // ✅ FIXED CREATE API (sirf yahin change hua hai)
     @PostMapping("")
-    public ResponseEntity<PropertyResponse> create(
+    public ResponseEntity<?> create(
             @RequestBody PropertyRequest req,
             HttpServletRequest request) {
         try {
