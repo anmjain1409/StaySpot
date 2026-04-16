@@ -71,7 +71,7 @@ public class PropertyController {
             String token = header.substring(7);
             String username = jwtUtil.extractUsername(token);
             String role = userService.getUserByUsername(username).map(u -> u.getRole()).orElse("NOT_FOUND");
-            return ResponseEntity.status(403).body("Forbidden: User " + username + " has role " + role);
+            return ResponseEntity.status(403).body(Map.of("error", "Forbidden", "user", username, "role", role));
         }
         return ResponseEntity.ok(service.getPending());
     }
