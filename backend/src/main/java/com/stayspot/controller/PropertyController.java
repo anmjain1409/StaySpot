@@ -55,17 +55,17 @@ public class PropertyController {
     // ===== BAAKI SAB SAME HAI =====
 
     @GetMapping("/owner/{username}")
-    public ResponseEntity<List<PropertyResponse>> getByOwner(@PathVariable String username) {
+    public ResponseEntity<?> getByOwner(@PathVariable String username) {
         return ResponseEntity.ok(service.getByOwner(username));
     }
 
     @GetMapping("/approved")
-    public ResponseEntity<List<PropertyResponse>> getApproved() {
+    public ResponseEntity<?> getApproved() {
         return ResponseEntity.ok(service.getApproved());
     }
 
     @GetMapping("/pending")
-    public ResponseEntity<List<PropertyResponse>> getPending(HttpServletRequest request) {
+    public ResponseEntity<?> getPending(HttpServletRequest request) {
         if (!isAdmin(request)) {
             String header = request.getHeader("Authorization");
             String token = header.substring(7);
