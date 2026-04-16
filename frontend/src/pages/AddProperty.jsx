@@ -320,14 +320,13 @@ export default function AddProperty() {
               <div style={inputGroupStyle}>
                 <label style={labelStyle}>BHK / Rooms <span style={{ color: "red" }}>*</span></label>
                 <select name="bhk" required value={form.bhk} onChange={handleChange} style={inputFieldStyle}>
-                  <option value="">Select BHK</option>
-                  <option value="Studio">Studio</option>
-                  <option value="1 RK">1 RK</option>
-                  <option value="1 BHK">1 BHK</option>
-                  <option value="2 BHK">2 BHK</option>
-                  <option value="3 BHK">3 BHK</option>
-                  <option value="4 BHK">4 BHK</option>
-                  <option value="House">House</option>
+                  <option value="STUDIO">Studio</option>
+                  <option value="RK">1 RK</option>
+                  <option value="BHK1">1 BHK</option>
+                  <option value="BHK2">2 BHK</option>
+                  <option value="BHK3">3 BHK</option>
+                  <option value="BHK4">4 BHK</option>
+                  <option value="HOUSE">House</option>
                 </select>
               </div>
             </div>
