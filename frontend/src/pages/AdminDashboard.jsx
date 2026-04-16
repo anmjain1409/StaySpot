@@ -316,7 +316,7 @@ export default function AdminDashboard() {
                 <table className="custom-table">
                   <thead>
                     <tr>
-                      <th>Landlord Name</th>
+                      <th>House Title</th>
                       <th>House Type</th>
                       <th>Status</th>
                       <th>Action</th>
@@ -325,7 +325,7 @@ export default function AdminDashboard() {
                   <tbody>
                     {properties.map((p) => (
                       <tr key={p.id}>
-                        <td>{p.ownerName || p.ownerUsername}</td>
+                        <td>{p.title || "No Title"}</td>
                         <td>{p.houseType}</td>
                         <td><span className="status-badge pending">Pending</span></td>
                         <td>
@@ -514,6 +514,10 @@ export default function AdminDashboard() {
               <div className="detail-item">
                 <span className="detail-label">Owner</span>
                 <span className="detail-value">{selectedPropertyDetails.ownerName || selectedPropertyDetails.ownerUsername}</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Title</span>
+                <span className="detail-value">{selectedPropertyDetails.title || "No Title"}</span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">Type</span>

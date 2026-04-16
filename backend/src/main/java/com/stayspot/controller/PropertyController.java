@@ -36,7 +36,7 @@ public class PropertyController {
 
             String token = header.substring(7);
             if (!jwtUtil.isTokenValid(token)) {
-                return ResponseEntity.status(401).body(null);
+                return ResponseEntity.status(401).build();
             }
 
             // token se username nikaal ke owner set karo
@@ -47,7 +47,8 @@ public class PropertyController {
             return ResponseEntity.ok(resp);
 
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(null);
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
         }
     }
 
@@ -76,21 +77,7 @@ public class PropertyController {
         if (!isAdmin(request)) {
             return ResponseEntity.status(403).body("Forbidden: admin only");
         }
-        Optional<PropertyResponse> opt = service.approve(id).map(p -> PropertyResponse.builder()
-                .id(p.getId())
-                .ownerUsername(p.getOwnerUsername())
-                .ownerName(p.getOwnerName())
-                .address(p.getAddress())
-                .houseNo(p.getHouseNo())
-                .streetNo(p.getStreetNo())
-                .rentPrice(p.getRentPrice())
-                .houseType(p.getHouseType())
-                .amenities(p.getAmenities())
-                .latitude(p.getLatitude())
-                .longitude(p.getLongitude())
-                .status(p.getStatus())
-                .createdAt(p.getCreatedAt())
-                .build());
+        Optional<PropertyResponse> opt = service.approve(id).map(service::mapToResponse);
         return opt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -102,22 +89,7 @@ public class PropertyController {
         }
         String remark = body != null ? body.getRemark() : null;
         Optional<com.stayspot.model.Property> opt = service.reject(id, remark);
-        return opt.map(p -> PropertyResponse.builder()
-                .id(p.getId())
-                .ownerUsername(p.getOwnerUsername())
-                .ownerName(p.getOwnerName())
-                .address(p.getAddress())
-                .houseNo(p.getHouseNo())
-                .streetNo(p.getStreetNo())
-                .rentPrice(p.getRentPrice())
-                .houseType(p.getHouseType())
-                .amenities(p.getAmenities())
-                .latitude(p.getLatitude())
-                .longitude(p.getLongitude())
-                .status(p.getStatus())
-                .remark(p.getRemark())
-                .createdAt(p.getCreatedAt())
-                .build()).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return opt.map(service::mapToResponse).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

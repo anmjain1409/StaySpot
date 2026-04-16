@@ -107,7 +107,7 @@ export default function AddProperty() {
         const payload = {
           contents: [{
             parts: [
-              { text: "Analyze these house photos and provide details in this JSON format ONLY: {\"houseType\": \"Independent House\" | \"Duplex\" | \"Row House\" | \"Apartment / Flat\", \"bhk\": \"Studio\" | \"1 RK\" | \"1 BHK\" | \"2 BHK\" | \"3 BHK\" | \"4 BHK\" | \"House\", \"furnishing\": \"Unfurnished\" | \"Semi-Furnished\" | \"Fully Furnished\", \"amenities\": [], \"suggestedRent\": 15000}. Return only valid JSON." },
+              { text: "Analyze these house photos and provide details in this JSON format ONLY: {\"houseType\": \"Independent House\" | \"Duplex\" | \"Row House\" | \"Apartment / Flat\", \"bhk\": \"STUDIO\" | \"RK\" | \"BHK1\" | \"BHK2\" | \"BHK3\" | \"BHK4\" | \"HOUSE\", \"furnishing\": \"Unfurnished\" | \"Semi-Furnished\" | \"Fully Furnished\", \"amenities\": [], \"suggestedRent\": 15000}. Return only valid JSON." },
               ...base64Images.slice(0, 3).map(data => ({ inline_data: { mime_type: "image/jpeg", data } }))
             ]
           }]
@@ -173,7 +173,8 @@ export default function AddProperty() {
       alert("Listing request submitted successfully!");
       navigate("/landlord-status");
     } catch (err) {
-      alert("Failed to submit request. Please try again.");
+      console.error("Submission error:", err);
+      alert(`Failed to submit request: ${err.message || "Unknown error"}. Please try again.`);
     } finally {
       setLoading(false);
     }

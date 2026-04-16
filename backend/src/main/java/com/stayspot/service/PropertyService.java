@@ -25,6 +25,7 @@ public class PropertyService {
                 .ownerUsername(req.getOwnerUsername())
                 .ownerName(req.getOwnerName())
                 .mobileNumber(req.getMobileNumber())
+                .title(req.getTitle())
                 .address(req.getAddress())
                 .houseNo(req.getHouseNo())
                 .streetNo(req.getStreetNo())
@@ -33,7 +34,7 @@ public class PropertyService {
                 .houseType(req.getHouseType())
                 .bhk(req.getBhk())
                 .furnishing(req.getFurnishing())
-                .availableFrom(req.getAvailableFrom())
+                .availableFrom((req.getAvailableFrom() != null && !req.getAvailableFrom().isEmpty()) ? java.time.LocalDate.parse(req.getAvailableFrom()) : null)
                 .amenities(req.getAmenities())
                 .images(req.getImages())
                 .latitude(req.getLatitude())
@@ -63,7 +64,7 @@ public class PropertyService {
                 .collect(Collectors.toList());
     }
 
-    private PropertyResponse mapToResponse(Property p) {
+    public PropertyResponse mapToResponse(Property p) {
         Long ownerId = userRepository.findByUsername(p.getOwnerUsername())
                 .map(u -> u.getId())
                 .orElse(null);
@@ -74,11 +75,16 @@ public class PropertyService {
                 .ownerUsername(p.getOwnerUsername())
                 .ownerName(p.getOwnerName())
                 .mobileNumber(p.getMobileNumber())
+                .title(p.getTitle())
                 .address(p.getAddress())
                 .houseNo(p.getHouseNo())
                 .streetNo(p.getStreetNo())
                 .rentPrice(p.getRentPrice())
+                .securityDeposit(p.getSecurityDeposit())
                 .houseType(p.getHouseType())
+                .bhk(p.getBhk())
+                .furnishing(p.getFurnishing())
+                .availableFrom(p.getAvailableFrom() != null ? p.getAvailableFrom().toString() : null)
                 .amenities(p.getAmenities())
                 .images(p.getImages())
                 .latitude(p.getLatitude())

@@ -134,7 +134,7 @@ export default function Properties() {
             }}
           >
             <h3 style={{ color: "#2563eb", marginBottom: "6px" }}>
-              {prop.houseType || "Property Listing"}
+              {prop.title || prop.houseType || "Property Listing"}
             </h3>
 
 

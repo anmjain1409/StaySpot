@@ -1,5 +1,6 @@
 package com.stayspot.model;
 
+import java.time.LocalDate;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,14 +30,14 @@ public class Property {
     private String houseType;
     private String bhk;
     private String furnishing;
-    private String availableFrom;
+    private LocalDate availableFrom;
     @ElementCollection
     private List<String> amenities;
     private Double latitude;
     private Double longitude;
     @ElementCollection
     @CollectionTable(name = "property_images", joinColumns = @JoinColumn(name = "property_id"))
-    @Column(name = "image")
+    @Column(name = "image", columnDefinition = "LONGTEXT")
     private List<String> images;
 
     private String status; // Pending, Approved, Rejected

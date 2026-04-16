@@ -8,6 +8,7 @@ public class PropertyRequest {
     private String ownerUsername;
     private String ownerName;
     private String mobileNumber;
+    private String title;
     private String address;
     private String houseNo;
     private String streetNo;
