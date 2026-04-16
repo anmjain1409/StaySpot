@@ -35,7 +35,8 @@ public class Property {
     private Double latitude;
     private Double longitude;
     @ElementCollection
-    @Column(columnDefinition = "LONGTEXT")
+    @CollectionTable(name = "property_images", joinColumns = @JoinColumn(name = "property_id"))
+    @Column(name = "image")
     private List<String> images;
 
     private String status; // Pending, Approved, Rejected
